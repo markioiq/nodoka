@@ -69,7 +69,6 @@ def subst    *–³•ÏŠ·		= *–³•ÏŠ·
 def subst    *•ÏŠ·		= *•ÏŠ·
 def subst    *‚Ğ‚ç‚ª‚È		= *Space
 def subst    *‰p”		= S-*‰p”
-mod control -= LeftControl
 
 
 key *F3= &WindowIdentify                                                #ƒL[ƒoƒCƒ“ƒh‚Ìİ’è
@@ -77,7 +76,12 @@ key *F3= &WindowIdentify                                                #ƒL[ƒoƒ
 
 key C-Semicolon = &WindowMaximize	# C-; ‚ÅÅ‘å‰»
 
+
+# LeftControl ‚ğ CapsLock ‚É
+mod control -= LeftControl
 key LeftControl = S-‰p”		# CapsLock ‚ğ—LŒø‰»
+# ‰p” ‚ğ LeftControl ‚É
+mod Control += !‰p”
 
 
 
