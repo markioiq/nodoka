@@ -84,6 +84,9 @@ key LeftControl = S-英数		# CapsLock を有効化
 mod Control += !英数
 
 
+keymap2 EmacsC-X
+ key C-s = C-s
+
 
 window NodokaGuiEdit /のどかGuiEdit/ : EmacsEdit                           #のどかGuiEdit
 
@@ -98,4 +101,9 @@ window Chrome /chrome.exe/ : EmacsEdit
 #TITLE:	C:\Program Files (x86)\Evernote\Evernote\Evernote.exe:すべてのノートブック - m.kawask@gmail.com - Evernote::::::::
 
 window Evernote /Evernote.exe/ : EmacsEdit
+
+
+#CLASS:	C:\Program Files\Java\jdk1.7.0_25\jre\bin\javaw.exe:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0
+#TITLE:	C:\Program Files\Java\jdk1.7.0_25\jre\bin\javaw.exe:Ruby - roll-generator/main.rb - Eclipse::::::::::::::
+window Eclipse ( /javaw.exe/ && /Eclipse/ ) : EmacsEdit
 
