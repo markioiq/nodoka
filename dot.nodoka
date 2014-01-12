@@ -10,82 +10,116 @@
 
   #
 
-include "read-keyboard-define.nodoka"                                   #1. キーボード定義ファイル 英語/日本語配列や、Emacsライク設定をシンボル定義で切り替えます。
 
-keymap Global                                                           #2. グローバルキーマップの設定
+# -DNODOKA だけ指定して本ファイルを読み込む
 
-  #3. 便宜上定義するもの 不要なら削除あるいはコメント化可能ですが、キーバインド出力は設定ファイルの解析に役立ちます。
+#1. キーボード定義ファイル 英語/日本語配列や、Emacsライク設定をシンボル定義で切り替えます。
+#include "read-keyboard-define.nodoka"
 
-key C-A-D = &DescribeBindings                                           # (1) Ctrl-Alt-Dキーで、現在のキーバインド情報をログ出力
+include "109.nodoka"
 
-key S-F1= &DescribeBindings                                             # (2) Shift-F1キーで、現在のキーバインド情報をログ出力
+define KBD104on109
 
-key F1 = &SendPostMessage("PostTray",,"のどか", 0x0205, 0, 0)              # (3) F1キーで、のどかのメニューを開く
-
-#include "Shift-F2_toggle_US-JP-Keyboard.nodoka"                        # (4) Shift-F2キーで英語と日本語キーボード配列を切り替える設定
-
-  #
-
-  #4. サンプル設定
-
-  # 注1；(1)から(7)は併用できません。同時に有効にしないでください。
-
-#include "contrib\\nodoka-settings.txt"                                 # 注2：これらサンプル定義ファイルはユーザ様ご提供のものであり、非サポートです。
-
-  # 注3：(8)から(10)の設定ファイルの内部記述にも定義が重なるものがあるので有効にする場合にはご注意ください。
-
-  # 注4：これらの設定ファイルを修正して用いる場合には、インストールフォルダからホームディレクトリにコピーしてお使いください。
-
-#include "contrib\\sample.nodoka"                                       # (1) ヘルプのサンプル例 Esc<->半角全角、Ctrl<->英数、ダイアモンドカーソル ESDX、Ctrl-H,G,M、変換キーでIME ON、無変換でIME OFF
-
-#include "contrib\\98x1.nodoka"                                         # (2) NEC PC98x1キーボード用のキーボード定義ファイル　これを有効にする場合には、7行13行までコメントにして、別途 keymap Globalを宣言してください。
-
-#include "contrib\\ax.nodoka"                                           # (3) AXキーボード用のキーボード定義ファイル これを有効にする場合には、7行13行までコメントにして、別途 keymap Globalを宣言してください。
-
-#include "contrib\\109onAX.nodoka"                                      # (4) AXキーボード用のキーボード定義ファイル (3) ax.nodokaと併用だろうと考えますが未確認です。
-
-#include "contrib\\dvorak.nodoka"                                       # (5) dvorak配列用定義ファイル 英語配列用なので、-DUSE104(104.nodoka)と併用してください。
-
-#include "contrib\\DVORAKon109.nodoka"                                  # (6) dvorak配列用定義ファイル 日本語配列用なので、-DUSE109(109.nodoka)と併用してください。
-
-#include "contrib\\keitai.nodoka"                                       # (7) テンキーを用いてIME ON時に携帯電話ライクかな入力 日本語配列用なので、-DUSE109(109.nodoka)と併用してください。
-
-  #
-
-#include "contrib\\other.nodoka"                                        # (8) desktopviewの設定、SandSの設定、音量制御の設定、キーワード入力、フルキー数字キーカスタマイズ
-
-#include "contrib\\ime.nodoka"                                          # (9) IMEオンオフ制御
-
-#include "contrib\\cursor.nodoka"                                       # (10) カーソル移動、バックスペース、Enterなどの設定
-
-  #
-
-  #5. ユーザーカスタム設定
-
-  #  以下に、ご自身の設定を御書き下さい。この行は削除可能です。
+include "default.nodoka"
 
 
-def subst    *無変換		= *無変換
-def subst    *変換		= *変換
-def subst    *ひらがな		= *Space
-def subst    *英数		= S-*英数
+# CapsLock を Control にする
+# 特に何もしなくてよい？
+
+# LeftControl を Control モディファイアから除外する
+mod control	-= LeftControl
+key LeftControl	= $CapsLock
 
 
-key *F3= &WindowIdentify                                                #キーバインドの設定
+# 「ひらがな」を右側の Alt キーにする
+# (右側に Alt キーがない場合に使う)
+key ひらがな	= RightAlt
+mod alt		= ひらがな LeftAlt
+
+
+def subst ~S-*半角/全角	 = $GRAVE_ACCENT
+def subst  S-*半角/全角	 = $TILDE
+def subst  A-半角/全角	 = $ToggleIME
+def subst  S-*_2	 = $COMMERCIAL_AT
+def subst  S-*_6	 = $CIRCUMFLEX_ACCENT
+def subst  S-*_7	 = $AMPERSAND
+def subst  S-*_8	 = $ASTERISK
+def subst  S-*_9	 = $LEFT_PARENTHESIS
+def subst  S-*_0	 = $RIGHT_PARENTHESIS
+def subst  S-*Hyphen	 = $LOW_LINE
+def subst ~S-*Caret	 = $EQUALS_SIGN
+def subst  S-*Caret	 = $PLUS_SIGN
+def subst ~S-*Atmark	 = $LEFT_SQUARE_BRACKET
+def subst  S-*Atmark	 = $LEFT_CURLY_BRACKET
+def subst ~S-*OpenBracket	= $RIGHT_SQUARE_BRACKET
+def subst  S-*OpenBracket	= $RIGHT_CURLY_BRACKET
+def subst ~S-*CloseBracket	= $REVERSE_SOLIDUS
+def subst  S-*CloseBracket	= $VERTICAL_LINE
+def subst  S-*Semicolon	 = $COLON
+def subst ~S-*Colon	 = $APOSTROPHE
+def subst  S-*Colon	 = $QUOTATION_MARK
+#def subst    *英数	 = S-*英数
+def subst *ReverseSolidus	= *RightShift
+
+key 半角/全角	= &Default
+key 変換	= &Default
+key C-変換	= &Default
+key S-変換	= &Default
+key 無変換	= 無変換
+key C-変換	= 無変換
+key A-C-l	= &Default
+#key F1	 = &Ignore
+#key F12	= W-l
+key C-S-Down	= &Default
+key C-S-Up	= &Default
+key C-S-Right	= &Default
+key C-S-Left	= &Default
+
+
+
+mod shift += ReverseSolidus
+
+
+
+#2. グローバルキーマップの設定
+#keymap Global
+
+#3. 便宜上定義するもの 不要なら削除あるいはコメント化可能ですが、キーバインド出力は設定ファイルの解析に役立ちます。
+
+# (1) Ctrl-Alt-Dキーで、現在のキーバインド情報をログ出力
+key C-A-D = &DescribeBindings                                           
+
+# (2) Shift-F1キーで、現在のキーバインド情報をログ出力
+key S-F1= &DescribeBindings
+
+# (3) F1キーで、のどかのメニューを開く
+key F1 = &SendPostMessage("PostTray",,"のどか", 0x0205, 0, 0)
+
+# (4) Shift-F2キーで英語と日本語キーボード配列を切り替える設定
+#include "Shift-F2_toggle_US-JP-Keyboard.nodoka"
+
+
+
+key *F3		= &WindowIdentify                                                #キーバインドの設定
+key C-S-f	= &Default
 
 
 key C-Semicolon = &WindowMaximize	# C-; で最大化
 
 
+
+
 # LeftControl を CapsLock に
-mod control -= LeftControl
-key LeftControl = S-英数		# CapsLock を有効化
+#mod control -= LeftControl
+#key LeftControl = S-英数		# CapsLock を有効化
 # 英数 を LeftControl に
-mod Control += !英数
+#keyseq $CapsLock		= S-英数
+#mod Control += $CapsLock
 
 
 keymap2 EmacsC-X
- key C-s = C-s
+ key C-s	= C-s
+ key b		= &DescribeBindings
 
 
 window NodokaGuiEdit /のどかGuiEdit/ : EmacsEdit                           #のどかGuiEdit
@@ -103,7 +137,118 @@ window Chrome /chrome.exe/ : EmacsEdit
 window Evernote /Evernote.exe/ : EmacsEdit
 
 
+
+keymap2 EclipseBaseC-X : EmacsC-X
+	# Quick Switch Editor
+	key b		= C-e
+
+	# Open Resource
+	key C-f		= C-S-r
+
+	# Close Editor
+	key k		= C-w
+
+	# Switch Editor
+	key C-b		= C-S-e
+
+
+keymap2 EclipseBaseC-C
+	# Run Java Application
+	key j		= A-S-x j
+
+	# Run JUnit Test
+	key t		= A-S-x t
+
+	# Quick Fix
+	key f		= C-_1
+
+
+keymap2 EclipseC-U : EmacsC-U
+	# Open Test Class
+	key A-C-l	= A-_9
+
+
+keymap EclipseBase : EmacsEdit
+	# C-x
+	key C-x	= &Prefix(EclipseBaseC-X)
+
+	# C-c
+	key C-c	= &Prefix(EclipseBaseC-C)
+
+	# Content Assist
+	key A-Slash	= C-space
+
+	# Format
+	key C-S-f	= &Default
+
+	# Incremental Find
+	key C-s	= C-j
+
+	# Incremental Find Reverse
+	key C-r	= C-S-j
+
+	# Open Declaration
+	key F3		= &Default
+
+	# Open Declaration
+	key C-Enter	= F3
+
+	# テスティングペアを開く
+	key A-C-l	= C-_9
+
 #CLASS:	C:\Program Files\Java\jdk1.7.0_25\jre\bin\javaw.exe:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0
 #TITLE:	C:\Program Files\Java\jdk1.7.0_25\jre\bin\javaw.exe:Ruby - roll-generator/main.rb - Eclipse::::::::::::::
-window Eclipse ( /javaw.exe/ && /Eclipse/ ) : EmacsEdit
+window Eclipse ( /javaw.exe/ && /Eclipse/ ) : EclipseBase
+
+
+#CLASS:	C:\Program Files (x86)\Java\jdk1.7.0_45\bin\javaw.exe:SWT_Window0
+#TITLE:	C:\Program Files (x86)\Java\jdk1.7.0_45\bin\javaw.exe:Spring - hoiku-server/pom.xml - Spring Tool Suite
+window STS ( /javaw.exe/ && /Spring/ ) : EclipseBase
+
+
+
+#4. サンプル設定
+
+# 注1；(1)から(7)は併用できません。同時に有効にしないでください。
+
+# 注2：これらサンプル定義ファイルはユーザ様ご提供のものであり、非サポートです。
+#include "contrib\\nodoka-settings.txt"                                 
+
+# 注3：(8)から(10)の設定ファイルの内部記述にも定義が重なるものがあるので有効にする場合にはご注意ください。
+
+# 注4：これらの設定ファイルを修正して用いる場合には、インストールフォルダからホームディレクトリにコピーしてお使いください。
+
+# (1) ヘルプのサンプル例 Esc<->半角全角、Ctrl<->英数、ダイアモンドカーソル ESDX、Ctrl-H,G,M、変換キーでIME ON、無変換でIME OFF
+#include "contrib\\sample.nodoka"
+
+# (2) NEC PC98x1キーボード用のキーボード定義ファイル　これを有効にする場合には、7行13行までコメントにして、別途 keymap Globalを宣言してください。
+#include "contrib\\98x1.nodoka"
+
+# (3) AXキーボード用のキーボード定義ファイル これを有効にする場合には、7行13行までコメントにして、別途 keymap Globalを宣言してください。
+#include "contrib\\ax.nodoka"
+
+# (4) AXキーボード用のキーボード定義ファイル (3) ax.nodokaと併用だろうと考えますが未確認です。
+#include "contrib\\109onAX.nodoka"
+
+# (5) dvorak配列用定義ファイル 英語配列用なので、-DUSE104(104.nodoka)と併用してください。
+#include "contrib\\dvorak.nodoka"
+
+# (6) dvorak配列用定義ファイル 日本語配列用なので、-DUSE109(109.nodoka)と併用してください。
+#include "contrib\\DVORAKon109.nodoka"
+
+# (7) テンキーを用いてIME ON時に携帯電話ライクかな入力 日本語配列用なので、-DUSE109(109.nodoka)と併用してください。
+#include "contrib\\keitai.nodoka"
+
+# (8) desktopviewの設定、SandSの設定、音量制御の設定、キーワード入力、フルキー数字キーカスタマイズ
+#include "contrib\\other.nodoka"
+
+# (9) IMEオンオフ制御
+#include "contrib\\ime.nodoka"
+
+# (10) カーソル移動、バックスペース、Enterなどの設定
+#include "contrib\\cursor.nodoka"
+
+
+
+
 
