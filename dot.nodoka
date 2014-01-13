@@ -34,7 +34,7 @@ key LeftControl	= $CapsLock
 # 「ひらがな」を右側の Alt キーにする
 # (右側に Alt キーがない場合に使う)
 key ひらがな	= RightAlt
-mod alt		= ひらがな LeftAlt
+mod alt		+= ひらがな
 
 
 def subst ~S-*半角/全角	 = $GRAVE_ACCENT
