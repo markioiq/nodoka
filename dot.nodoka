@@ -330,7 +330,15 @@ window Explorer /Explorer.EXE/ : EmacsEdit
 	key C-d		= Delete
 
 
+################################################################################
+### Microsoft Word
+################################################################################
+keymap2 MicrosoftWordC-C
+	# スタイルの適用
+	key s		= C-S-s
 
+keymap MicrosoftWord
+	key C-c		= &Prefix(MicrosoftWordC-C)
 
 
 #4. サンプル設定
