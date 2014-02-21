@@ -118,8 +118,9 @@ key C-Semicolon = &WindowMaximize	# C-; で最大化
 
 
 keymap2 EmacsC-X
- key C-s	= C-s
  key b		= &DescribeBindings
+ key C-c	= A-F4
+ key C-s	= C-s
 
 
 window NodokaGuiEdit /のどかGuiEdit/ : EmacsEdit                           #のどかGuiEdit
@@ -137,6 +138,43 @@ window Chrome /chrome.exe/ : EmacsEdit
 window Evernote /Evernote.exe/ : EmacsEdit
 
 
+################################################################################
+### eclipse
+################################################################################
+keymap2 EclipseBaseC-U0_9C-U : Global \
+			= &Repeat((&KeymapWindow), 100) &HelpMessage &Variable(0, 0)
+	key C-G		= &HelpMessage &Variable(0, 0) &Ignore
+ 
+keymap2 EclipseBaseC-U0_9
+	event prefixed	= &HelpVariable("繰り返し")
+	key _0 Num0	= &Variable(10, 0) &Prefix(EclipseBaseC-U0_9)
+	key _1 Num1	= &Variable(10, 1) &Prefix(EclipseBaseC-U0_9)
+	key _2 Num2	= &Variable(10, 2) &Prefix(EclipseBaseC-U0_9)
+	key _3 Num3	= &Variable(10, 3) &Prefix(EclipseBaseC-U0_9)
+	key _4 Num4	= &Variable(10, 4) &Prefix(EclipseBaseC-U0_9)
+	key _5 Num5	= &Variable(10, 5) &Prefix(EclipseBaseC-U0_9)
+	key _6 Num6	= &Variable(10, 6) &Prefix(EclipseBaseC-U0_9)
+	key _7 Num7	= &Variable(10, 7) &Prefix(EclipseBaseC-U0_9)
+	key _8 Num8	= &Variable(10, 8) &Prefix(EclipseBaseC-U0_9)
+	key _9 Num9	= &Variable(10, 9) &Prefix(EclipseBaseC-U0_9)
+	key C-U		= &Prefix(EclipseBaseC-U0_9C-U)
+
+keymap2 EclipseBaseC-U
+	event prefixed	= &HelpVariable("繰り返し")
+	key _0 Num0	= &Variable(0, 0) &Prefix(EclipseBaseC-U0_9)
+	key _1 Num1	= &Variable(0, 1) &Prefix(EclipseBaseC-U0_9)
+	key _2 Num2	= &Variable(0, 2) &Prefix(EclipseBaseC-U0_9)
+	key _3 Num3	= &Variable(0, 3) &Prefix(EclipseBaseC-U0_9)
+	key _4 Num4	= &Variable(0, 4) &Prefix(EclipseBaseC-U0_9)
+	key _5 Num5	= &Variable(0, 5) &Prefix(EclipseBaseC-U0_9)
+	key _6 Num6	= &Variable(0, 6) &Prefix(EclipseBaseC-U0_9)
+	key _7 Num7	= &Variable(0, 7) &Prefix(EclipseBaseC-U0_9)
+	key _8 Num8	= &Variable(0, 8) &Prefix(EclipseBaseC-U0_9)
+	key _9 Num9	= &Variable(0, 9) &Prefix(EclipseBaseC-U0_9)
+	key C-U		= &Variable(4, 0) &Prefix(EclipseBaseC-U)
+
+	# Open Test Class
+	key A-C-l	= A-_9
 
 keymap2 EclipseBaseC-X : EmacsC-X
 	# Quick Switch Editor
@@ -162,18 +200,12 @@ keymap2 EclipseBaseC-C
 	# Quick Fix
 	key f		= C-_1
 
-
-keymap2 EclipseC-U : EmacsC-U
-	# Open Test Class
-	key A-C-l	= A-_9
-
-
 keymap EclipseBase : EmacsEdit
 	# C-x
-	key C-x	= &Prefix(EclipseBaseC-X)
+	key C-x		= &Prefix(EclipseBaseC-X)
 
 	# C-c
-	key C-c	= &Prefix(EclipseBaseC-C)
+	key C-c		= &Prefix(EclipseBaseC-C)
 
 	# Content Assist
 	key A-Slash	= C-space
@@ -182,10 +214,10 @@ keymap EclipseBase : EmacsEdit
 	key C-S-f	= &Default
 
 	# Incremental Find
-	key C-s	= C-j
+	key C-s		= C-j
 
 	# Incremental Find Reverse
-	key C-r	= C-S-j
+	key C-r		= C-S-j
 
 	# Open Declaration
 	key F3		= &Default
@@ -196,14 +228,108 @@ keymap EclipseBase : EmacsEdit
 	# テスティングペアを開く
 	key A-C-l	= C-_9
 
+	# C-u
+	key C-u		= &Variable(0, 4) &Prefix(EclipseBaseC-U)
+
+
 #CLASS:	C:\Program Files\Java\jdk1.7.0_25\jre\bin\javaw.exe:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0
 #TITLE:	C:\Program Files\Java\jdk1.7.0_25\jre\bin\javaw.exe:Ruby - roll-generator/main.rb - Eclipse::::::::::::::
-window Eclipse ( /javaw.exe/ && /Eclipse/ ) : EclipseBase
+window JEclipse ( /javaw.exe/ && /Eclipse/ ) : EclipseBase
 
+#CLASS:	C:\Documents and Settings\suc302\My Documents\eclipse\eclipse.exe:SWT_Window0
+#TITLE:	C:\Documents and Settings\suc302\My Documents\eclipse\eclipse.exe:PHP - pocahontas/pocahontas/app/models/call_result.php - Eclipse SDK
+window Eclipse /eclipse.exe:.*/ : EclipseBase
 
 #CLASS:	C:\Program Files (x86)\Java\jdk1.7.0_45\bin\javaw.exe:SWT_Window0
 #TITLE:	C:\Program Files (x86)\Java\jdk1.7.0_45\bin\javaw.exe:Spring - hoiku-server/pom.xml - Spring Tool Suite
 window STS ( /javaw.exe/ && /Spring/ ) : EclipseBase
+
+#CLASS:	C:\Program Files\Mozilla Firefox\firefox.exe:MozillaWindowClass
+#TITLE:	C:\Program Files\Mozilla Firefox\firefox.exe:Pocahontas　営業支援システム Loginusers - Mozilla Firefox
+window FireFox /firefox.exe:.*/ : EmacsEdit
+	key C-t		= &Default
+	key C-l		= &Default
+
+
+#CLASS:	C:\Program Files\Microsoft Office\Office\MSACCESS.EXE:wndclass_desked_gsk:MDIClient:VbaWindow
+#TITLE:	C:\Program Files\Microsoft Office\Office\MSACCESS.EXE:Microsoft Visual Basic - 20111006_3083(東京接続)顧客管理システム_FE - [Form_F担当者マスター (コード)]::20111006_3083(東京接続)顧客管理システム_FE - Form_F顧客検索 (コード)
+window VisualBasicEditorMap /MSACCESS.EXE:.*/ : EmacsEdit
+
+
+#CLASS:	C:\Program Files\Skype\Phone\Skype.exe:tSkMainForm
+#TITLE:	C:\Program Files\Skype\Phone\Skype.exe:Skype? - ins_302ka
+window Skype /Skype.exe:.*/ : EmacsEdit
+
+
+
+################################################################################
+### explorer
+################################################################################
+#CLASS:	C:\windows\Explorer.EXE:CabinetWClass:ShellTabWindowClass:DUIViewWndClassName:DirectUIHWND:CtrlNotifySink:SHELLDLL_DefView:DirectUIHWND:CtrlNotifySink:Edit
+#TITLE:	C:\windows\Explorer.EXE:260213 荒木先生資料:260213 荒木先生資料::::ShellView:::流山市レジュメ.doc
+window ExplorerRename /Explorer.EXE:.*Edit/ : EmacsEdit
+
+keymap2 ExplorerC-C
+	# rename
+	key r		= F2
+
+keymap2 ExplorerC-U0_9C-U : Global \
+			= &Repeat((&KeymapWindow), 100) &HelpMessage &Variable(0, 0)
+	key C-G		= &HelpMessage &Variable(0, 0) &Ignore
+ 
+keymap2 ExplorerC-U0_9
+	event prefixed	= &HelpVariable("繰り返し")
+	key _0 Num0	= &Variable(10, 0) &Prefix(ExplorerC-U0_9)
+	key _1 Num1	= &Variable(10, 1) &Prefix(ExplorerC-U0_9)
+	key _2 Num2	= &Variable(10, 2) &Prefix(ExplorerC-U0_9)
+	key _3 Num3	= &Variable(10, 3) &Prefix(ExplorerC-U0_9)
+	key _4 Num4	= &Variable(10, 4) &Prefix(ExplorerC-U0_9)
+	key _5 Num5	= &Variable(10, 5) &Prefix(ExplorerC-U0_9)
+	key _6 Num6	= &Variable(10, 6) &Prefix(ExplorerC-U0_9)
+	key _7 Num7	= &Variable(10, 7) &Prefix(ExplorerC-U0_9)
+	key _8 Num8	= &Variable(10, 8) &Prefix(ExplorerC-U0_9)
+	key _9 Num9	= &Variable(10, 9) &Prefix(ExplorerC-U0_9)
+	key C-U		= &Prefix(ExplorerC-U0_9C-U)
+
+keymap2 ExplorerC-U
+	event prefixed	= &HelpVariable("繰り返し")
+	key _0 Num0	= &Variable(0, 0) &Prefix(ExplorerC-U0_9)
+	key _1 Num1	= &Variable(0, 1) &Prefix(ExplorerC-U0_9)
+	key _2 Num2	= &Variable(0, 2) &Prefix(ExplorerC-U0_9)
+	key _3 Num3	= &Variable(0, 3) &Prefix(ExplorerC-U0_9)
+	key _4 Num4	= &Variable(0, 4) &Prefix(ExplorerC-U0_9)
+	key _5 Num5	= &Variable(0, 5) &Prefix(ExplorerC-U0_9)
+	key _6 Num6	= &Variable(0, 6) &Prefix(ExplorerC-U0_9)
+	key _7 Num7	= &Variable(0, 7) &Prefix(ExplorerC-U0_9)
+	key _8 Num8	= &Variable(0, 8) &Prefix(ExplorerC-U0_9)
+	key _9 Num9	= &Variable(0, 9) &Prefix(ExplorerC-U0_9)
+	key C-U		= &Variable(4, 0) &Prefix(ExplorerC-U)
+
+	# Windows8 の explorer 用。フルパスをコピーする。
+	key M-w		= A-h c p
+
+	# 確認なしで削除
+	key C-d		= S-Delete
+
+#CLASS:	C:\windows\Explorer.EXE:CabinetWClass:ShellTabWindowClass:DUIViewWndClassName:DirectUIHWND:CtrlNotifySink:SHELLDLL_DefView:DirectUIHWND
+#TITLE:	C:\windows\Explorer.EXE:69501Ｅｘｃｅｌ:69501Ｅｘｃｅｌ::::ShellView:
+window Explorer /Explorer.EXE/ : EmacsEdit
+	# C-u
+	key C-u		= &Variable(0, 4) &Prefix(ExplorerC-U)
+
+	# C-c
+	key C-c		= &Prefix(ExplorerC-C)
+
+	# rename
+	key S-r		= F2
+
+	# 親ディレクトリへ移動
+	key Backspace	= A-Up
+
+	# 確認ありで削除
+	key C-d		= Delete
+
+
 
 
 
