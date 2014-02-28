@@ -138,6 +138,14 @@ window Chrome /chrome.exe/ : EmacsEdit
 window Evernote /Evernote.exe/ : EmacsEdit
 
 
+#CLASS:	C:\PROGRAM FILES (X86)\FOXIT SOFTWARE\FOXIT J-READER\FOXIT READER.EXE:classFoxitReader:MDIClient:Afx:00FC0000:b:00010003:00000006:00060B1C:AfxMDIFrame100su:AfxFrameOrView100su:AfxWnd100su:AfxWnd100su
+#TITLE:	C:\PROGRAM FILES (X86)\FOXIT SOFTWARE\FOXIT J-READER\FOXIT READER.EXE:140305ÅyÉAÉìÉPÅ[ÉgÅzîÌï]âøé“å§èC(íââ™í¨ól).PDF (ï€åÏ) - Foxit J-Reader:::::DisplayPageView:Reader
+
+window FoxitJReader /FOXIT READER.EXE/ : EmacsEdit
+	key C-f		= C-Tab
+	key C-b		= C-S-Tab
+	key C-w		= &Default
+
 ################################################################################
 ### eclipse
 ################################################################################
@@ -268,6 +276,7 @@ window Skype /Skype.exe:.*/ : EmacsEdit
 #CLASS:	C:\windows\Explorer.EXE:CabinetWClass:ShellTabWindowClass:DUIViewWndClassName:DirectUIHWND:CtrlNotifySink:SHELLDLL_DefView:DirectUIHWND:CtrlNotifySink:Edit
 #TITLE:	C:\windows\Explorer.EXE:260213 çrñÿêÊê∂éëóø:260213 çrñÿêÊê∂éëóø::::ShellView:::ó¨éRésÉåÉWÉÖÉÅ.doc
 window ExplorerRename /Explorer.EXE:.*Edit/ : EmacsEdit
+	key BackSpace	= &Default
 
 keymap2 ExplorerC-C
 	# rename
@@ -339,6 +348,43 @@ keymap2 MicrosoftWordC-C
 
 keymap MicrosoftWord
 	key C-c		= &Prefix(MicrosoftWordC-C)
+
+
+
+
+################################################################################
+### Microsoft Excel
+################################################################################
+keymap2 MicrosoftExcelC-CH
+	key l		= LAlt j d a a l
+	key c		= LAlt j d a a c
+	key r		= LAlt j d a a r
+	key h 		= LAlt j d a a h
+
+keymap2 MicrosoftExcelC-CV
+	key t		= LAlt j d a a t
+	key m		= LAlt j d a a m
+	key b		= LAlt j d a a b
+	key v 		= LAlt j d a a v
+
+keymap2 MicrosoftExcelC-C
+	key h		= &Prefix(MicrosoftExcelC-CH)
+	key v		= &Prefix(MicrosoftExcelC-CV)
+
+keymap MicrosoftExcel
+	key C-c		= &Prefix(MicrosoftExcelC-C)
+
+
+#CLASS:	C:\Program Files (x86)\sakura\sakura.exe:TextEditorWindow:SplitterWndClass:EditorClient
+#TITLE:	C:\Program Files (x86)\sakura\sakura.exe:C:\Users\suc302\Downloads\sasara [iris blue]\skin.xml - sakura 1.6.6.0 :SplitterWndClass:EditorClient
+window Sakura /sakura.exe/ : EmacsEdit
+
+
+#CLASS:	C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\VCExpress.exe:HwndWrapper[DefaultDomain;;7858f7ad-ad92-459d-9aee-c3fd72847b84]
+#TITLE:	C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\VCExpress.exe:Sample1 - Microsoft Visual C++ 2010 Express
+
+window VCExpress /VCExpress.exe/ : EmacsEdit
+
 
 
 #4. ÉTÉìÉvÉãê›íË
