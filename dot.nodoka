@@ -118,9 +118,10 @@ key C-Semicolon = &WindowMaximize	# C-; で最大化
 
 
 keymap2 EmacsC-X
- key b		= &DescribeBindings
- key C-c	= A-F4
- key C-s	= C-s
+	key b		= &DescribeBindings
+	key C-c		= A-F4
+	key C-s		= C-s
+#	key C-b		= A-Tab
 
 
 window NodokaGuiEdit /のどかGuiEdit/ : EmacsEdit                           #のどかGuiEdit
@@ -269,15 +270,20 @@ window VisualBasicEditorMap /MSACCESS.EXE:.*/ : EmacsEdit
 window Skype /Skype.exe:.*/ : EmacsEdit
 
 
+# CLASS:	C:\Program Files (x86)\Java\jre7\bin\javaw.exe:SunAwtFrame
+# TITLE:	C:\Program Files (x86)\Java\jre7\bin\javaw.exe:astah - [no_title] (*)
+window Astah ( /javaw.exe/ && /astah/ ) : EmacsEdit
+
+#CLASS:	C:\Program Files (x86)\Java\jre7\bin\javaw.exe:SunAwtFrame
+#TITLE:	C:\Program Files (x86)\Java\jre7\bin\javaw.exe:マップ1* - FreeMind - モード: マインドマップ
+window FreeMind ( /javaw.exe/ && /FreeMind/ ) : EmacsEdit
+	key C-i		= Insert
+
+
 
 ################################################################################
 ### explorer
 ################################################################################
-#CLASS:	C:\windows\Explorer.EXE:CabinetWClass:ShellTabWindowClass:DUIViewWndClassName:DirectUIHWND:CtrlNotifySink:SHELLDLL_DefView:DirectUIHWND:CtrlNotifySink:Edit
-#TITLE:	C:\windows\Explorer.EXE:260213 荒木先生資料:260213 荒木先生資料::::ShellView:::流山市レジュメ.doc
-window ExplorerRename /Explorer.EXE:.*Edit/ : EmacsEdit
-	key BackSpace	= &Default
-
 keymap2 ExplorerC-C
 	# rename
 	key r		= F2
@@ -338,6 +344,20 @@ window Explorer /Explorer.EXE/ : EmacsEdit
 	# 確認ありで削除
 	key C-d		= Delete
 
+	# このフォルダ内で検索
+	key Slash	= C-f A-j f
+
+	# すべての列のサイズを自動的に変更する
+	key C-l		= RAlt v s f
+
+#CLASS:	C:\windows\Explorer.EXE:CabinetWClass:ShellTabWindowClass:DUIViewWndClassName:DirectUIHWND:CtrlNotifySink:SHELLDLL_DefView:DirectUIHWND:CtrlNotifySink:Edit
+#TITLE:	C:\windows\Explorer.EXE:260213 荒木先生資料:260213 荒木先生資料::::ShellView:::流山市レジュメ.doc
+window ExplorerRename /Explorer.EXE:.*Edit/ : EmacsEdit
+	key BackSpace	= &Default
+	key S-r		= &Default
+	key Slash	= &Default
+
+
 
 ################################################################################
 ### Microsoft Word
@@ -348,6 +368,8 @@ keymap2 MicrosoftWordC-C
 
 keymap MicrosoftWord
 	key C-c		= &Prefix(MicrosoftWordC-C)
+	key C-i		= A-h a i
+	key S-C-i	= A-h a o
 
 
 
