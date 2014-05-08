@@ -133,13 +133,13 @@ window Chrome /chrome.exe/ : EmacsEdit
   key C-t = &Default
 
 #CLASS:	C:\Program Files (x86)\Evernote\Evernote\Evernote.exe:ENMainFrame:ENMainView:ENRightPaneView:ENNoteSplitView:ENNoteViewHost:ENNoteView:ENHtmlNoteCtrl:CefBrowserWindow:WebViewHost
-#TITLE:	C:\Program Files (x86)\Evernote\Evernote\Evernote.exe:すべてのノートブック - m.kawask@gmail.com - Evernote::::::::
+#TITLE:	C:\Program Files (x86)\Evernote\Evernote\Evernote.exe:すべてのノートブック - xxx@xxx - Evernote::::::::
 
 window Evernote /Evernote.exe/ : EmacsEdit
 
 
 #CLASS:	C:\PROGRAM FILES (X86)\FOXIT SOFTWARE\FOXIT J-READER\FOXIT READER.EXE:classFoxitReader:MDIClient:Afx:00FC0000:b:00010003:00000006:00060B1C:AfxMDIFrame100su:AfxFrameOrView100su:AfxWnd100su:AfxWnd100su
-#TITLE:	C:\PROGRAM FILES (X86)\FOXIT SOFTWARE\FOXIT J-READER\FOXIT READER.EXE:140305【アンケート】被評価者研修(忠岡町様).PDF (保護) - Foxit J-Reader:::::DisplayPageView:Reader
+#TITLE:	C:\PROGRAM FILES (X86)\FOXIT SOFTWARE\FOXIT J-READER\FOXIT READER.EXE:hoge.PDF  - Foxit J-Reader:::::DisplayPageView:Reader
 
 window FoxitJReader /FOXIT READER.EXE/ : EmacsEdit
 	key C-f		= C-Tab
@@ -245,22 +245,22 @@ keymap EclipseBase : EmacsEdit
 window JEclipse ( /javaw.exe/ && /Eclipse/ ) : EclipseBase
 
 #CLASS:	C:\Documents and Settings\suc302\My Documents\eclipse\eclipse.exe:SWT_Window0
-#TITLE:	C:\Documents and Settings\suc302\My Documents\eclipse\eclipse.exe:PHP - pocahontas/pocahontas/app/models/call_result.php - Eclipse SDK
+#TITLE:	C:\Documents and Settings\suc302\My Documents\eclipse\eclipse.exe:PHP - hoge.php - Eclipse SDK
 window Eclipse /eclipse.exe:.*/ : EclipseBase
 
 #CLASS:	C:\Program Files (x86)\Java\jdk1.7.0_45\bin\javaw.exe:SWT_Window0
-#TITLE:	C:\Program Files (x86)\Java\jdk1.7.0_45\bin\javaw.exe:Spring - hoiku-server/pom.xml - Spring Tool Suite
+#TITLE:	C:\Program Files (x86)\Java\jdk1.7.0_45\bin\javaw.exe:Spring
 window STS ( /javaw.exe/ && /Spring/ ) : EclipseBase
 
 #CLASS:	C:\Program Files\Mozilla Firefox\firefox.exe:MozillaWindowClass
-#TITLE:	C:\Program Files\Mozilla Firefox\firefox.exe:Pocahontas　営業支援システム Loginusers - Mozilla Firefox
+#TITLE:	C:\Program Files\Mozilla Firefox\firefox.exe:システム
 window FireFox /firefox.exe:.*/ : EmacsEdit
 	key C-t		= &Default
 	key C-l		= &Default
 
 
 #CLASS:	C:\Program Files\Microsoft Office\Office\MSACCESS.EXE:wndclass_desked_gsk:MDIClient:VbaWindow
-#TITLE:	C:\Program Files\Microsoft Office\Office\MSACCESS.EXE:Microsoft Visual Basic - 20111006_3083(東京接続)顧客管理システム_FE - [Form_F担当者マスター (コード)]::20111006_3083(東京接続)顧客管理システム_FE - Form_F顧客検索 (コード)
+#TITLE:	C:\Program Files\Microsoft Office\Office\MSACCESS.EXE:Microsoft Visual Basic - 20111006_3083システム::システム
 window VisualBasicEditorMap /MSACCESS.EXE:.*/ : EmacsEdit
 
 
@@ -274,7 +274,7 @@ window Skype /Skype.exe:.*/ : EmacsEdit
 ### explorer
 ################################################################################
 #CLASS:	C:\windows\Explorer.EXE:CabinetWClass:ShellTabWindowClass:DUIViewWndClassName:DirectUIHWND:CtrlNotifySink:SHELLDLL_DefView:DirectUIHWND:CtrlNotifySink:Edit
-#TITLE:	C:\windows\Explorer.EXE:260213 荒木先生資料:260213 荒木先生資料::::ShellView:::流山市レジュメ.doc
+#TITLE:	C:\windows\Explorer.EXE:資料:資料::::ShellView:::レジュメ.doc
 window ExplorerRename /Explorer.EXE:.*Edit/ : EmacsEdit
 	key BackSpace	= &Default
 
@@ -373,6 +373,18 @@ keymap2 MicrosoftExcelC-C
 
 keymap MicrosoftExcel
 	key C-c		= &Prefix(MicrosoftExcelC-C)
+
+################################################################################
+### Microsoft PowerPoint
+################################################################################
+#CLASS:	C:\Program Files\Microsoft Office 15\Root\Office15\POWERPNT.EXE:PPTFrameClass:MDIClient:mdiClass
+#TITLE:	C:\Program Files\Microsoft Office 15\Root\Office15\POWERPNT.EXE:.ppt [互換モード] - PowerPoint::
+window MicrosoftPowerPoint /POWERPNT.EXE/ : EmacsEdit
+
+
+#CLASS:	C:\Program Files (x86)\Naver\LINE\Line.exe:wxWindow:SkinScrollWnd:SkinScrollMidWnd:ATL:00B44B48
+#TITLE:	C:\Program Files (x86)\Naver\LINE\Line.exe:username:::
+window Line /Line.exe/ : EmacsEdit
 
 
 #CLASS:	C:\Program Files (x86)\sakura\sakura.exe:TextEditorWindow:SplitterWndClass:EditorClient
