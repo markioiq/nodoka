@@ -268,6 +268,15 @@ window VisualBasicEditorMap /MSACCESS.EXE:.*/ : EmacsEdit
 #TITLE:	C:\Program Files\Skype\Phone\Skype.exe:Skype? - ins_302ka
 window Skype /Skype.exe:.*/ : EmacsEdit
 
+# CLASS:	C:\Program Files (x86)\Java\jre7\bin\javaw.exe:SunAwtFrame
+# TITLE:	C:\Program Files (x86)\Java\jre7\bin\javaw.exe:astah - [no_title] (*)
+window Astah ( /javaw.exe/ && /astah/ ) : EmacsEdit
+
+#CLASS:	C:\Program Files (x86)\Java\jre7\bin\javaw.exe:SunAwtFrame
+#TITLE:	C:\Program Files (x86)\Java\jre7\bin\javaw.exe:マップ1* - FreeMind - モード: マインドマップ
+window FreeMind ( /javaw.exe/ && /FreeMind/ ) : EmacsEdit
+	key C-i		= Insert
+
 
 
 ################################################################################
@@ -338,6 +347,19 @@ window Explorer /Explorer.EXE/ : EmacsEdit
 	# 確認ありで削除
 	key C-d		= Delete
 
+	# このフォルダ内で検索
+	key Slash	= C-f A-j f
+	
+	# すべての列のサイズを自動的に変更する
+	key C-l		= RAlt v s f
+
+#CLASS:	C:\windows\Explorer.EXE:CabinetWClass:ShellTabWindowClass:DUIViewWndClassName:DirectUIHWND:CtrlNotifySink:SHELLDLL_DefView:DirectUIHWND:CtrlNotifySink:Edit
+window ExplorerRename /Explorer.EXE:.*Edit/ : EmacsEdit
+	key BackSpace	= &Default
+	key S-r			= &Default
+	key Slash		= &Default
+
+
 
 ################################################################################
 ### Microsoft Word
@@ -348,7 +370,8 @@ keymap2 MicrosoftWordC-C
 
 keymap MicrosoftWord
 	key C-c		= &Prefix(MicrosoftWordC-C)
-
+	key C-i		= A-h a i
+	key S-C-i	= A-h a o
 
 
 
