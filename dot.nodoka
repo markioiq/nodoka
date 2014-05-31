@@ -130,7 +130,9 @@ window NodokaGuiEdit /のどかGuiEdit/ : EmacsEdit                           #のど
 #TITLE:	C:\Program Files (x86)\Google\Chrome\Application\chrome.exe:新しいタブ - Google Chrome:
 
 window Chrome /chrome.exe/ : EmacsEdit
-  key C-t = &Default
+	key C-t 	= &Default
+	key C-l		= &Default
+  
 
 #CLASS:	C:\Program Files (x86)\Evernote\Evernote\Evernote.exe:ENMainFrame:ENMainView:ENRightPaneView:ENNoteSplitView:ENNoteViewHost:ENNoteView:ENHtmlNoteCtrl:CefBrowserWindow:WebViewHost
 #TITLE:	C:\Program Files (x86)\Evernote\Evernote\Evernote.exe:すべてのノートブック - xxx@xxx - Evernote::::::::
@@ -331,7 +333,7 @@ keymap2 ExplorerC-U
 
 #CLASS:	C:\windows\Explorer.EXE:CabinetWClass:ShellTabWindowClass:DUIViewWndClassName:DirectUIHWND:CtrlNotifySink:SHELLDLL_DefView:DirectUIHWND
 #TITLE:	C:\windows\Explorer.EXE:69501Ｅｘｃｅｌ:69501Ｅｘｃｅｌ::::ShellView:
-window Explorer /Explorer.EXE/ : EmacsEdit
+window Explorer /Explorer.EXE:.*DirectUIHWND$/ : EmacsEdit
 	# C-u
 	key C-u		= &Variable(0, 4) &Prefix(ExplorerC-U)
 
