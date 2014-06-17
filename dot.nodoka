@@ -118,6 +118,7 @@ key C-Semicolon = &WindowMaximize	# C-; で最大化
 
 
 keymap2 EmacsC-X
+<<<<<<< HEAD
 	key b		= &DescribeBindings
 	key C-c		= A-F4
 	key C-s		= C-s
@@ -422,6 +423,295 @@ keymap2 MicrosoftPowerPointC-C
 #TITLE:	C:\Program Files\Microsoft Office 15\Root\Office15\POWERPNT.EXE:.ppt [互換モード] - PowerPoint::
 window MicrosoftPowerPoint /POWERPNT.EXE/ : EmacsEdit
 	key C-c		= &Prefix(MicrosoftPowerPointC-C)
+=======
+ key b		= &DescribeBindings
+ key C-c	= A-F4
+ key C-s	= C-s
+
+
+window NodokaGuiEdit /のどかGuiEdit/ : EmacsEdit                           #のどかGuiEdit
+
+
+#CLASS:	C:\Program Files (x86)\Google\Chrome\Application\chrome.exe:Chrome_WidgetWin_1:Chrome_OmniboxView
+#TITLE:	C:\Program Files (x86)\Google\Chrome\Application\chrome.exe:新しいタブ - Google Chrome:
+
+window Chrome /chrome.exe/ : EmacsEdit
+	key C-t 	= &Default
+	key C-l		= &Default
+  
+
+#CLASS:	C:\Program Files (x86)\Evernote\Evernote\Evernote.exe:ENMainFrame:ENMainView:ENRightPaneView:ENNoteSplitView:ENNoteViewHost:ENNoteView:ENHtmlNoteCtrl:CefBrowserWindow:WebViewHost
+#TITLE:	C:\Program Files (x86)\Evernote\Evernote\Evernote.exe:すべてのノートブック - xxx@xxx - Evernote::::::::
+
+window Evernote /Evernote.exe/ : EmacsEdit
+
+
+#CLASS:	C:\PROGRAM FILES (X86)\FOXIT SOFTWARE\FOXIT J-READER\FOXIT READER.EXE:classFoxitReader:MDIClient:Afx:00FC0000:b:00010003:00000006:00060B1C:AfxMDIFrame100su:AfxFrameOrView100su:AfxWnd100su:AfxWnd100su
+#TITLE:	C:\PROGRAM FILES (X86)\FOXIT SOFTWARE\FOXIT J-READER\FOXIT READER.EXE:hoge.PDF  - Foxit J-Reader:::::DisplayPageView:Reader
+
+window FoxitJReader /FOXIT READER.EXE/ : EmacsEdit
+	key C-f		= C-Tab
+	key C-b		= C-S-Tab
+	key C-w		= &Default
+
+################################################################################
+### eclipse
+################################################################################
+keymap2 EclipseBaseC-U0_9C-U : Global \
+			= &Repeat((&KeymapWindow), 100) &HelpMessage &Variable(0, 0)
+	key C-G		= &HelpMessage &Variable(0, 0) &Ignore
+ 
+keymap2 EclipseBaseC-U0_9
+	event prefixed	= &HelpVariable("繰り返し")
+	key _0 Num0	= &Variable(10, 0) &Prefix(EclipseBaseC-U0_9)
+	key _1 Num1	= &Variable(10, 1) &Prefix(EclipseBaseC-U0_9)
+	key _2 Num2	= &Variable(10, 2) &Prefix(EclipseBaseC-U0_9)
+	key _3 Num3	= &Variable(10, 3) &Prefix(EclipseBaseC-U0_9)
+	key _4 Num4	= &Variable(10, 4) &Prefix(EclipseBaseC-U0_9)
+	key _5 Num5	= &Variable(10, 5) &Prefix(EclipseBaseC-U0_9)
+	key _6 Num6	= &Variable(10, 6) &Prefix(EclipseBaseC-U0_9)
+	key _7 Num7	= &Variable(10, 7) &Prefix(EclipseBaseC-U0_9)
+	key _8 Num8	= &Variable(10, 8) &Prefix(EclipseBaseC-U0_9)
+	key _9 Num9	= &Variable(10, 9) &Prefix(EclipseBaseC-U0_9)
+	key C-U		= &Prefix(EclipseBaseC-U0_9C-U)
+
+keymap2 EclipseBaseC-U
+	event prefixed	= &HelpVariable("繰り返し")
+	key _0 Num0	= &Variable(0, 0) &Prefix(EclipseBaseC-U0_9)
+	key _1 Num1	= &Variable(0, 1) &Prefix(EclipseBaseC-U0_9)
+	key _2 Num2	= &Variable(0, 2) &Prefix(EclipseBaseC-U0_9)
+	key _3 Num3	= &Variable(0, 3) &Prefix(EclipseBaseC-U0_9)
+	key _4 Num4	= &Variable(0, 4) &Prefix(EclipseBaseC-U0_9)
+	key _5 Num5	= &Variable(0, 5) &Prefix(EclipseBaseC-U0_9)
+	key _6 Num6	= &Variable(0, 6) &Prefix(EclipseBaseC-U0_9)
+	key _7 Num7	= &Variable(0, 7) &Prefix(EclipseBaseC-U0_9)
+	key _8 Num8	= &Variable(0, 8) &Prefix(EclipseBaseC-U0_9)
+	key _9 Num9	= &Variable(0, 9) &Prefix(EclipseBaseC-U0_9)
+	key C-U		= &Variable(4, 0) &Prefix(EclipseBaseC-U)
+
+	# Open Test Class
+	key A-C-l	= A-_9
+
+keymap2 EclipseBaseC-X : EmacsC-X
+	# Quick Switch Editor
+	key b		= C-e
+
+	# Open Resource
+	key C-f		= C-S-r
+
+	# Close Editor
+	key k		= C-w
+
+	# Switch Editor
+	key C-b		= C-S-e
+
+
+keymap2 EclipseBaseC-C
+	# Run Java Application
+	key j		= A-S-x j
+
+	# Run JUnit Test
+	key t		= A-S-x t
+
+	# Quick Fix
+	key f		= C-_1
+
+keymap EclipseBase : EmacsEdit
+	# C-x
+	key C-x		= &Prefix(EclipseBaseC-X)
+
+	# C-c
+	key C-c		= &Prefix(EclipseBaseC-C)
+
+	# Content Assist
+	key A-Slash	= C-space
+
+	# Format
+	key C-S-f	= &Default
+
+	# Incremental Find
+	key C-s		= C-j
+
+	# Incremental Find Reverse
+	key C-r		= C-S-j
+
+	# Open Declaration
+	key F3		= &Default
+
+	# Open Declaration
+	key C-Enter	= F3
+
+	# テスティングペアを開く
+	key A-C-l	= C-_9
+
+	# C-u
+	key C-u		= &Variable(0, 4) &Prefix(EclipseBaseC-U)
+
+
+#CLASS:	C:\Program Files\Java\jdk1.7.0_25\jre\bin\javaw.exe:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0:SWT_Window0
+#TITLE:	C:\Program Files\Java\jdk1.7.0_25\jre\bin\javaw.exe:Ruby - roll-generator/main.rb - Eclipse::::::::::::::
+window JEclipse ( /javaw.exe/ && /Eclipse/ ) : EclipseBase
+
+#CLASS:	C:\Documents and Settings\suc302\My Documents\eclipse\eclipse.exe:SWT_Window0
+#TITLE:	C:\Documents and Settings\suc302\My Documents\eclipse\eclipse.exe:PHP - hoge.php - Eclipse SDK
+window Eclipse /eclipse.exe:.*/ : EclipseBase
+
+#CLASS:	C:\Program Files (x86)\Java\jdk1.7.0_45\bin\javaw.exe:SWT_Window0
+#TITLE:	C:\Program Files (x86)\Java\jdk1.7.0_45\bin\javaw.exe:Spring
+window STS ( /javaw.exe/ && /Spring/ ) : EclipseBase
+
+#CLASS:	C:\Program Files\Mozilla Firefox\firefox.exe:MozillaWindowClass
+#TITLE:	C:\Program Files\Mozilla Firefox\firefox.exe:システム
+window FireFox /firefox.exe:.*/ : EmacsEdit
+	key C-t		= &Default
+	key C-l		= &Default
+
+
+#CLASS:	C:\Program Files\Microsoft Office\Office\MSACCESS.EXE:wndclass_desked_gsk:MDIClient:VbaWindow
+#TITLE:	C:\Program Files\Microsoft Office\Office\MSACCESS.EXE:Microsoft Visual Basic - 20111006_3083システム::システム
+window VisualBasicEditorMap /MSACCESS.EXE:.*/ : EmacsEdit
+
+
+#CLASS:	C:\Program Files\Skype\Phone\Skype.exe:tSkMainForm
+#TITLE:	C:\Program Files\Skype\Phone\Skype.exe:Skype? - ins_302ka
+window Skype /Skype.exe:.*/ : EmacsEdit
+
+# CLASS:	C:\Program Files (x86)\Java\jre7\bin\javaw.exe:SunAwtFrame
+# TITLE:	C:\Program Files (x86)\Java\jre7\bin\javaw.exe:astah - [no_title] (*)
+window Astah ( /javaw.exe/ && /astah/ ) : EmacsEdit
+
+#CLASS:	C:\Program Files (x86)\Java\jre7\bin\javaw.exe:SunAwtFrame
+#TITLE:	C:\Program Files (x86)\Java\jre7\bin\javaw.exe:マップ1* - FreeMind - モード: マインドマップ
+window FreeMind ( /javaw.exe/ && /FreeMind/ ) : EmacsEdit
+	key C-i		= Insert
+
+
+
+################################################################################
+### explorer
+################################################################################
+#CLASS:	C:\windows\Explorer.EXE:CabinetWClass:ShellTabWindowClass:DUIViewWndClassName:DirectUIHWND:CtrlNotifySink:SHELLDLL_DefView:DirectUIHWND:CtrlNotifySink:Edit
+#TITLE:	C:\windows\Explorer.EXE:資料:資料::::ShellView:::レジュメ.doc
+window ExplorerRename /Explorer.EXE:.*Edit/ : EmacsEdit
+	key BackSpace	= &Default
+
+keymap2 ExplorerC-C
+	# rename
+	key r		= F2
+
+keymap2 ExplorerC-U0_9C-U : Global \
+			= &Repeat((&KeymapWindow), 100) &HelpMessage &Variable(0, 0)
+	key C-G		= &HelpMessage &Variable(0, 0) &Ignore
+ 
+keymap2 ExplorerC-U0_9
+	event prefixed	= &HelpVariable("繰り返し")
+	key _0 Num0	= &Variable(10, 0) &Prefix(ExplorerC-U0_9)
+	key _1 Num1	= &Variable(10, 1) &Prefix(ExplorerC-U0_9)
+	key _2 Num2	= &Variable(10, 2) &Prefix(ExplorerC-U0_9)
+	key _3 Num3	= &Variable(10, 3) &Prefix(ExplorerC-U0_9)
+	key _4 Num4	= &Variable(10, 4) &Prefix(ExplorerC-U0_9)
+	key _5 Num5	= &Variable(10, 5) &Prefix(ExplorerC-U0_9)
+	key _6 Num6	= &Variable(10, 6) &Prefix(ExplorerC-U0_9)
+	key _7 Num7	= &Variable(10, 7) &Prefix(ExplorerC-U0_9)
+	key _8 Num8	= &Variable(10, 8) &Prefix(ExplorerC-U0_9)
+	key _9 Num9	= &Variable(10, 9) &Prefix(ExplorerC-U0_9)
+	key C-U		= &Prefix(ExplorerC-U0_9C-U)
+
+keymap2 ExplorerC-U
+	event prefixed	= &HelpVariable("繰り返し")
+	key _0 Num0	= &Variable(0, 0) &Prefix(ExplorerC-U0_9)
+	key _1 Num1	= &Variable(0, 1) &Prefix(ExplorerC-U0_9)
+	key _2 Num2	= &Variable(0, 2) &Prefix(ExplorerC-U0_9)
+	key _3 Num3	= &Variable(0, 3) &Prefix(ExplorerC-U0_9)
+	key _4 Num4	= &Variable(0, 4) &Prefix(ExplorerC-U0_9)
+	key _5 Num5	= &Variable(0, 5) &Prefix(ExplorerC-U0_9)
+	key _6 Num6	= &Variable(0, 6) &Prefix(ExplorerC-U0_9)
+	key _7 Num7	= &Variable(0, 7) &Prefix(ExplorerC-U0_9)
+	key _8 Num8	= &Variable(0, 8) &Prefix(ExplorerC-U0_9)
+	key _9 Num9	= &Variable(0, 9) &Prefix(ExplorerC-U0_9)
+	key C-U		= &Variable(4, 0) &Prefix(ExplorerC-U)
+
+	# Windows8 の explorer 用。フルパスをコピーする。
+	key M-w		= A-h c p
+
+	# 確認なしで削除
+	key C-d		= S-Delete
+
+#CLASS:	C:\windows\Explorer.EXE:CabinetWClass:ShellTabWindowClass:DUIViewWndClassName:DirectUIHWND:CtrlNotifySink:SHELLDLL_DefView:DirectUIHWND
+#TITLE:	C:\windows\Explorer.EXE:69501Ｅｘｃｅｌ:69501Ｅｘｃｅｌ::::ShellView:
+window Explorer /Explorer.EXE:.*DirectUIHWND$/ : EmacsEdit
+	# C-u
+	key C-u		= &Variable(0, 4) &Prefix(ExplorerC-U)
+
+	# C-c
+	key C-c		= &Prefix(ExplorerC-C)
+
+	# rename
+	key S-r		= F2
+
+	# 親ディレクトリへ移動
+	key Backspace	= A-Up
+
+	# 確認ありで削除
+	key C-d		= Delete
+
+	# このフォルダ内で検索
+	key Slash	= C-f A-j f
+	
+	# すべての列のサイズを自動的に変更する
+	key C-l		= RAlt v s f
+
+#CLASS:	C:\windows\Explorer.EXE:CabinetWClass:ShellTabWindowClass:DUIViewWndClassName:DirectUIHWND:CtrlNotifySink:SHELLDLL_DefView:DirectUIHWND:CtrlNotifySink:Edit
+window ExplorerRename /Explorer.EXE:.*Edit/ : EmacsEdit
+	key BackSpace	= &Default
+	key S-r			= &Default
+	key Slash		= &Default
+
+
+
+################################################################################
+### Microsoft Word
+################################################################################
+keymap2 MicrosoftWordC-C
+	# スタイルの適用
+	key s		= C-S-s
+
+keymap MicrosoftWord
+	key C-c		= &Prefix(MicrosoftWordC-C)
+	key C-i		= A-h a i
+	key S-C-i	= A-h a o
+
+
+
+################################################################################
+### Microsoft Excel
+################################################################################
+keymap2 MicrosoftExcelC-CH
+	key l		= LAlt j d a a l
+	key c		= LAlt j d a a c
+	key r		= LAlt j d a a r
+	key h 		= LAlt j d a a h
+
+keymap2 MicrosoftExcelC-CV
+	key t		= LAlt j d a a t
+	key m		= LAlt j d a a m
+	key b		= LAlt j d a a b
+	key v 		= LAlt j d a a v
+
+keymap2 MicrosoftExcelC-C
+	key h		= &Prefix(MicrosoftExcelC-CH)
+	key v		= &Prefix(MicrosoftExcelC-CV)
+
+keymap MicrosoftExcel
+	key C-c		= &Prefix(MicrosoftExcelC-C)
+
+################################################################################
+### Microsoft PowerPoint
+################################################################################
+#CLASS:	C:\Program Files\Microsoft Office 15\Root\Office15\POWERPNT.EXE:PPTFrameClass:MDIClient:mdiClass
+#TITLE:	C:\Program Files\Microsoft Office 15\Root\Office15\POWERPNT.EXE:.ppt [互換モード] - PowerPoint::
+window MicrosoftPowerPoint /POWERPNT.EXE/ : EmacsEdit
+>>>>>>> refs/remotes/origin/master
 
 
 #CLASS:	C:\Program Files (x86)\Naver\LINE\Line.exe:wxWindow:SkinScrollWnd:SkinScrollMidWnd:ATL:00B44B48
