@@ -262,7 +262,11 @@ window FireFox /firefox.exe:.*/ : EmacsEdit
 
 #CLASS:	C:\Program Files\Microsoft Office\Office\MSACCESS.EXE:wndclass_desked_gsk:MDIClient:VbaWindow
 #TITLE:	C:\Program Files\Microsoft Office\Office\MSACCESS.EXE:Microsoft Visual Basic - 20111006_3083システム::システム
-window VisualBasicEditorMap /MSACCESS.EXE:.*/ : EmacsEdit
+window VisualBasicMap /MSACCESS.EXE:.*/ : EmacsEdit
+
+#CLASS:	C:\Program Files (x86)\Microsoft Office\Office14\MSACCESS.EXE:OMain:OFormPopupNC:OFormSub:OFormChild:OFormSub:OKttbx
+#TITLE:	C:\Program Files (x86)\Microsoft Office\Office14\MSACCESS.EXE:Microsoft Access - システム
+
 
 
 #CLASS:	C:\Program Files\Skype\Phone\Skype.exe:tSkMainForm
@@ -389,9 +393,16 @@ keymap2 MicrosoftExcelC-CV
 	key b		= LAlt j d a a b
 	key v 		= LAlt j d a a v
 
+keymap2 MicrosoftExcelC-CI
+	key n		= S-Space Apps c Down Apps e
+	key p		= S-Space Apps c Apps e
+	key r		= C-Space Apps c Enter Right Apps e
+	key l		= C-Space Apps c Enter Apps e
+
 keymap2 MicrosoftExcelC-C
 	key h		= &Prefix(MicrosoftExcelC-CH)
 	key v		= &Prefix(MicrosoftExcelC-CV)
+	key i		= &Prefix(MicrosoftExcelC-CI)
 
 keymap MicrosoftExcel
 	key C-c		= &Prefix(MicrosoftExcelC-C)
@@ -399,9 +410,18 @@ keymap MicrosoftExcel
 ################################################################################
 ### Microsoft PowerPoint
 ################################################################################
+keymap2 MicrosoftPowerPointC-CI
+	key n		= LAlt j l e
+	key p		= LAlt j l v
+	key r		= LAlt j l l
+	key l		= LAlt j l i
+
+keymap2 MicrosoftPowerPointC-C
+	key i		= &Prefix(MicrosoftPowerPointC-CI)
 #CLASS:	C:\Program Files\Microsoft Office 15\Root\Office15\POWERPNT.EXE:PPTFrameClass:MDIClient:mdiClass
 #TITLE:	C:\Program Files\Microsoft Office 15\Root\Office15\POWERPNT.EXE:.ppt [互換モード] - PowerPoint::
 window MicrosoftPowerPoint /POWERPNT.EXE/ : EmacsEdit
+	key C-c		= &Prefix(MicrosoftPowerPointC-C)
 
 
 #CLASS:	C:\Program Files (x86)\Naver\LINE\Line.exe:wxWindow:SkinScrollWnd:SkinScrollMidWnd:ATL:00B44B48
