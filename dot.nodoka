@@ -118,7 +118,6 @@ key C-Semicolon = &WindowMaximize	# C-; �ōő剻
 
 
 keymap2 EmacsC-X
-<<<<<<< HEAD
 	key b		= &DescribeBindings
 	key C-c		= A-F4
 	key C-s		= C-s
